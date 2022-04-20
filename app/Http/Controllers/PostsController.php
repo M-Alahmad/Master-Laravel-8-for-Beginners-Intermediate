@@ -97,7 +97,7 @@ class PostsController extends Controller
         // if  (Gate::denies('update-post', $post)){
         //     abort(403, "ما فيك تغيرها يا حبيب");
         // }
-        $this->authorize('update-post', $post);
+        $this->authorize($post);
         return view('posts.edit', ['post' => BlogPost::findOrFail($id)]);
         
     }
@@ -116,7 +116,7 @@ class PostsController extends Controller
     //   if  (Gate::denies('update-post', $post)){
     //       abort(403, "ما فيك تغيرها يا حبيب");
     //   }
-    $this->authorize('update-post', $post);
+    $this->authorize( $post);
            
         $validated = $request->validated();
         $post->fill($validated);
@@ -139,7 +139,7 @@ class PostsController extends Controller
         // if  (Gate::denies('delete-post', $post)){
         //     abort(403, "ما فيك تمحيها يا حبيب");
         // }
-        $this->authorize('delete-post', $post);
+        $this->authorize($post);
 
         $post->delete();
 
